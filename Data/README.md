@@ -14,13 +14,17 @@ This folder contains all the normalized data for various assets and metrics used
 Each CSV file daily observations of:
 	•	Date
 	•	Open, High, Low, Close prices
-  • Volumes, dividends
+ 	•	Volumes, dividends
+  	•	Capital gains
  
 Each normalised CSV file includes daily observations of:
 	•	Date (often used as the index)
 	•	Open, High, Low, Close prices (normalized)
 	•	Volatility (varies by dataset; e.g., standard deviation, ATR, or custom measure)
 	•	VWAP (Volume Weighted Average Price)
+ 
+### Important note: ### 
+NDXL is a bespoke composite index made of a split of NDX, XLY, DRIV, LIT. The intuition is to use this as a market proxy to TSLA in the dynamic regression model
  
 ## Notes & Disclaimers ##
 1.	Data Sources: The CSV files are derived or downloaded from yahoo finance API. Be aware of potential licensing or usage restrictions if you plan to redistribute.
