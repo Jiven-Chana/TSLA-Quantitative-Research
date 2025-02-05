@@ -1,85 +1,85 @@
-Monte Carlo Simulation for TSLA Stock Price Forecasting
+# Monte Carlo Simulation for TSLA Stock Price Forecasting
 
-This repository contains a Python script that demonstrates the application of Monte Carlo Simulation to forecast Tesla (TSLA) stock price movements. The script performs stochastic modeling using Geometric Brownian Motion (GBM), visualizes potential future price paths, and calculates statistical metrics.
+## Overview
 
-Description
+This repository contains a Python-based Monte Carlo simulation model for forecasting Tesla Inc. (TSLA) stock price movements. The model applies **Geometric Brownian Motion (GBM)** to simulate multiple future price trajectories, providing a probabilistic forecast of potential stock price distributions. This approach helps investors assess uncertainty and evaluate risk in future price movements.
 
-The script performs the following operations:
+## Features
 
-Data Collection: Loads historical TSLA stock price data and related market proxy information.
+The script performs the following key functions:
 
-Data Preprocessing: Cleans and prepares data for simulation.
+### 📊 **Data Handling**
+- Loads **historical TSLA stock price data** and related market indices.
+- Cleans, processes, and prepares data for modeling.
 
-Geometric Brownian Motion (GBM) Model:
+### 📈 **Geometric Brownian Motion (GBM)**
+- Estimates **drift** (expected return) and **volatility** from historical price movements.
+- Simulates multiple possible future price paths for TSLA stock.
 
-Estimates drift and volatility from historical returns.
+### 🎲 **Monte Carlo Simulation**
+- Runs a large number of simulations to generate probabilistic price forecasts.
+- Uses **randomized sampling** to model uncertainty in future stock movements.
 
-Simulates multiple future price paths using GBM.
+### 📉 **Visualization**
+- Plots **simulated price trajectories** to showcase potential market scenarios.
+- Generates **histograms** of projected stock price distributions.
 
-Monte Carlo Simulation:
+### 📊 **Statistical Analysis**
+- Computes **expected future price ranges** and probability intervals.
+- Evaluates **confidence intervals** and risk metrics.
 
-Runs a large number of simulations to generate a probabilistic forecast.
+---
 
-Uses random sampling to model uncertainty in stock price movements.
+## 📁 Project Structure
 
-Visualization:
+```plaintext
+├── data/        # Historical stock price data (CSV files)
+├── notebooks/   # Jupyter notebooks for in-depth analysis & visualization
+├── src/         # Source code for Monte Carlo simulations
+├── results/     # Outputs from simulations (e.g., plots, statistical summaries)
+├── README.md    # Project documentation
+└── monte_carlo_simulation.py  # Main script
+```
 
-Plots the simulated price paths.
+---
 
-Generates histograms of predicted price distributions.
+## 🚀 Usage
 
-Statistical Analysis:
+### **1. Install Dependencies**
+Ensure you have the required libraries installed before running the script:
 
-Computes expected future price ranges.
+```bash
+pip install numpy pandas matplotlib scipy yfinance
+```
 
-Analyzes confidence intervals and risk metrics.
+## Run the Simulation
 
-File Structure
+Navigate to the project directory and execute the script:
 
-data/: Contains historical stock price data.
-
-notebooks/: Jupyter Notebooks with analysis and visualization.
-
-src/: Source code for Monte Carlo simulations.
-
-results/: Outputs from simulations, including price distributions.
-
-README.md: Project documentation.
-
-Usage
-
-Ensure the following libraries are installed before running the script:
-
-numpy
-
-pandas
-
-matplotlib
-
-scipy
-
-yfinance
-
-To run the script, navigate to the script's directory and execute it in a Python environment:
-
+```bash
 python monte_carlo_simulation.py
+```
 
-Visualizations
+## Modify Parameters
 
-The script generates key visualizations, including:
+You can customize key simulation parameters in the script:
 
-Simulated Price Paths: Displays multiple future price scenarios for TSLA.
+```python
+num_simulations = 10000  # Number of Monte Carlo iterations
+time_horizon = 252       # Forecasting horizon in trading days
+```
 
-Probability Distributions: Shows the likelihood of different price outcomes.
+## 📊 Visualizations
 
-Configuration
+The script generates several insightful visualizations:
+	•	Simulated Price Paths: Multiple potential future price trajectories.
+	•	Probability Distribution: Histogram showing the likelihood of different price levels.
+	•	Statistical Insights: Confidence intervals and expected price ranges.
 
-Modify the script to adjust parameters such as the number of simulations, time horizon, and drift assumptions:
 
-num_simulations = 1000  # Number of Monte Carlo iterations
-time_horizon = 252  # Forecasting horizon in trading days
 
-Contributing
 
-Contributions to enhance the analysis or improve simulation efficiency are welcome. Please fork the repository and submit a pull request with your changes.
+
+
+
 
