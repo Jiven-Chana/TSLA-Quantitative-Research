@@ -47,7 +47,7 @@ pip install notebook
 To estimate **Tesla’s market sensitivity**:
 
 ```bash
-
+ReturnsRegressionModel.py
 ```
 
 This will output:
@@ -58,7 +58,7 @@ This will output:
 To simulate **future Tesla stock price paths**:
 
 ```bash
-
+multi_asset_simulation.py
 ```
 
 This will generate:
