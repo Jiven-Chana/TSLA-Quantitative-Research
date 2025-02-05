@@ -1,6 +1,6 @@
 # Financial Data Analysis with Kalman Filter
 
-This repository contains a Python script that demonstrates the application of a Kalman Filter to analyze the dynamic beta and alpha between the stock returns of Tesla (TSLA) and the Nasdaq 100 index (NDXL). The script performs a detailed time series analysis, visualizes the relationship dynamics, and calculates statistical metrics.
+This repository contains a Python script that demonstrates the application of a Kalman Filter to analyze the dynamic beta and alpha between the stock returns of Tesla (TSLA) and the custom built composite index NDXL (comprised of LIT, DRIV, XLY, NDX at custom weightings). The script performs a detailed time series analysis, visualizes the relationship dynamics, and calculates statistical metrics.
 
 ## Description
 
