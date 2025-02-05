@@ -1,79 +1,131 @@
-# The Kalman Filter: A Mathematical Overview
+# 🚀 Kalman Filter & Monte Carlo Simulation for TSLA Stock Forecasting
 
-## Introduction
+## 📌 Overview
 
-The Kalman Filter is an iterative mathematical process that estimates the state of a linear dynamic system from a series of noisy measurements. It is widely used in the fields of signal processing, econometrics, and control systems for its robustness and efficiency in handling uncertainty and noise.
+This repository contains Python implementations of **Kalman Filtering** and **Monte Carlo Simulation** for forecasting **Tesla (TSLA) stock prices**. By integrating **real-time financial data**, these models estimate stock price dynamics, analyze market sensitivity, and generate probabilistic future price distributions.
 
-## Mathematical Formulation
+### 🔹 Key Features
+- **Kalman Filter for Real-Time State Estimation**
+  - Dynamically estimates **Tesla’s stock price movements** relative to a market composite index.
+  - Computes **rolling alpha & beta** to assess Tesla’s sensitivity to broader market fluctuations.
+  - Uses **VWAP, volatility, and closing prices** as key input variables.
 
-The Kalman Filter operates in a two-step process: prediction and update. Here, we detail each step involved in its computation.
+- **Monte Carlo Simulation with Geometric Brownian Motion (GBM)**
+  - Forecasts future price movements using **stochastic modeling**.
+  - Runs **10,000+ simulations** to generate **probabilistic price distributions**.
+  - Evaluates market volatility impact through **sensitivity heatmaps**.
 
-## State Space Representation
+- **Comprehensive Financial Data Integration**
+  - Utilizes **daily Tesla stock data** and a composite index (*NDXL*).
+  - Incorporates **Nasdaq 100 (NDX), Consumer Discretionary (XLY), Autonomous EVs (DRIV), and Lithium Tech (LIT)** to track sector-specific influences.
 
-Consider a system whose state at time $t$  is represented by the vector  $x_t$ , which evolves according to the equation:
+---
 
-$$
- x_t = F_t x_{t-1} + B_t u_t + w_t 
-$$
- 
-where:
-- $F_t$  is the state transition model which is applied to the previous state  $x_{t-1}$ 
-- $B_t$  is the control-input model which is applied to the control vector  $u_t$ 
-- $w_t$  is the process noise which is assumed to be drawn from a normal distribution with mean zero and covariance matrix  $Q_t$
+---
 
-The measurement  $z_t$ , which is an observation at time  $t$ , is given by:
+## 🛠 Installation & Dependencies
 
-$$
- z_t = H_t x_t + v_t 
-$$
+Ensure you have the following dependencies installed:
 
-where:
-- $H_t$  is the observation model which maps the true state space into the observed space
-- $v_t$  is the observation noise which is assumed to be drawn from a normal distribution with mean zero and covariance matrix  $R_t$ 
+```bash
+pip install numpy pandas matplotlib scipy yfinance scikit-learn
+```
 
-## Prediction Phase
+Additionally, install Jupyter Notebook for interactive analysis:
 
-The prediction phase projects forward the current state estimate to obtain an a priori estimate for the next time step:
+```bash
+pip install notebook
+```
 
-$$
- \hat{x}{t|t-1} = F_t \hat{x}{t-1|t-1} + B_t u_t 
- P_{t|t-1} = F_t P_{t-1|t-1} F_t^T + Q_t 
-$$
+---
 
-where:
-- p $\hat{x}_{t|t-1}$  is the predicted state estimate
-- p $P_{t|t-1}$  is the predicted error covariance.
+---
 
-## Update Phase
+## 🚀 Usage Guide
 
-The update phase adjusts the projected estimate by an actual measurement at that time:
+### 🔹 1. Running the Kalman Filter
+To estimate **Tesla’s market sensitivity**:
 
-$$
- K_t = P_{t|t-1} H_t^T (H_t P_{t|t-1} H_t^T + R_t)^{-1} 
-$$
-$$
- \hat{x}{t|t} = \hat{x}{t|t-1} + K_t (z_t - H_t \hat{x}{t|t-1}) 
-$$
-$$
- P{t|t} = (I - K_t H_t) P_{t|t-1} 
-$$
+```bash
 
-where:
-- $K_t$  is the Kalman Gain,
-- $\hat{x}_{t|t}$  is the updated state estimate,
-- $P_{t|t}$  is the updated error covariance.
+```
 
-## Advantages of Kalman Filtering 
-- Robustness: Effectively handles noisy data.
-- Flexibility: Can be adapted to non-linear models via extensions such as the Extended Kalman Filter or Unscented Kalman Filter.
-- Real-time: Operates in a recursive manner which makes it suitable for real-time problems.
+This will output:
+- **Rolling Alpha & Beta estimates** for Tesla.
+- **Time-series plots** comparing Tesla’s stock behavior against its market composite.
 
-## Project Scope
+### 🔹 2. Running Monte Carlo Simulation
+To simulate **future Tesla stock price paths**:
 
-This project applies the Kalman Filter to financial datasets, specifically:
-- Estimating hidden financial states such as valuations from noisy observable data like stock prices.
-- Analyzing relationships between different financial instruments through state estimations.
+```bash
 
-## Conclusion
+```
 
-The Kalman Filter provides a sophisticated framework for understanding and predicting dynamic systems in finance. This project seeks to harness this capability to offer deeper insights into financial data, contributing to more informed decision-making processes in financial analysis and trading strategies.
+This will generate:
+- **Multiple simulated price paths** for different time horizons (3 months, 6 months, 1 year, 5 years).
+- **Probability distributions & confidence intervals** for price forecasts.
+- **Sensitivity heatmaps** analyzing the impact of volatility changes.
+
+---
+
+## 📊 Key Outputs
+
+### 📈 Simulated Price Paths
+- **Forecasts Tesla’s stock trajectory** based on historical drift & volatility.
+- Provides **confidence bands** for price expectations.
+
+### 🎯 Rolling Beta & Alpha Analysis
+- **Beta:** Measures Tesla’s **market sensitivity**—a high beta suggests Tesla moves in sync with broader markets.
+- **Alpha:** Measures **Tesla’s independent performance**—a negative trend suggests underperformance relative to market risk.
+
+### 🔥 Sensitivity Heatmaps
+- Shows how **changes in volatility (σ) & drift (µ)** impact Tesla’s price projections.
+- Helps investors fine-tune **risk management & trading strategies**.
+
+---
+
+## 📌 Model Assumptions & Limitations
+
+### 🔹 Kalman Filter Considerations
+✔ Assumes **Tesla’s market behavior follows a dynamic regression model**.  
+✔ Uses **daily VWAP, volatility, and returns** to update state estimates.  
+⚠ Performance depends on **data accuracy & feature engineering**.
+
+### 🔹 Monte Carlo Simulation Assumptions
+✔ Uses **Geometric Brownian Motion (GBM)**, assuming **log-normal price distribution**.  
+✔ Generates **10,000+ stochastic price paths** to model **uncertainty & volatility**.  
+⚠ Does not account for **market shocks, economic policy changes, or black swan events**.
+
+---
+
+## 📈 Investment Insights
+
+This project provides **quantitative insights** for investors and analysts by:
+- **Assessing Tesla’s risk & volatility profile** through **rolling beta analysis**.
+- **Forecasting potential price ranges** using **Monte Carlo simulation**.
+- **Enhancing trading strategies** with **dynamic market sensitivity tracking**.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions to improve:
+- **Model accuracy & feature selection** for Kalman Filter.
+- **Alternative stochastic models** beyond GBM for Monte Carlo simulations.
+- **New visualizations & statistical metrics** for enhanced analysis.
+
+To contribute, **fork the repository** and submit a **pull request**.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License** – feel free to use and modify.
+
+---
+
+## 📩 Contact & Support
+
+For any inquiries, reach out via **GitHub Issues** or email 📧 *jiven.chana@icloud.com*.
+
+
